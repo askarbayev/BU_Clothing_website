@@ -24,6 +24,34 @@
     <input type="submit" value="Shopping Cart" />
 </form>
 
+<ul id="items"></ul>
 
 </body>
+
+<script>
+//TODO: put this in js file
+var ul = document.getElementById("items");
+//TODO: read this data from a "database" file
+var products = [["Product1", 5], ["Product2", 7], ["Product3", 100]];
+for(var i in products) {
+    var li = document.createElement('li');
+    
+    li.appendChild(document.createTextNode("Name: " + products[i][0]));
+    li.appendChild(document.createElement('br'));
+    
+    li.appendChild(document.createTextNode("Price: $" + products[i][1]));
+    li.appendChild(document.createElement('br'));
+    
+    var btn = document.createElement('button');
+    var t = document.createTextNode("Add to Cart");       // Create a text node
+	btn.appendChild(t);
+    li.appendChild(btn);
+    
+    li.appendChild(document.createElement('br'));
+    li.appendChild(document.createElement('br'));
+    ul.appendChild(li);
+}
+</script>
+
+
 </html>
