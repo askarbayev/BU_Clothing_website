@@ -2,12 +2,23 @@
 <html>
 <head>
 <title>BU Shopping</title>
+<script src="./scripts/payment.js"></script>
 </head>
 <body>
 
-<h1>This is the payment page.</h1>
+<h1>Payment</h1>
 
-<form action="./payment_confirmation.html">
+<span>Total amount to charge:</span><span id="totalCost"></span><br><br>
+
+<form action="./payment_confirmation.html" onsubmit="return validatePayment()" method="post">
+	Credit Card Type: 
+	<select name="cardType" required>
+  		<option value="master">Master Card</option>
+  		<option value="visa">Visa</option>
+	</select><br>
+	Credit Card Number: <input type="text" name="creditCardNumber" required><br>
+	Security Code: <input type="text" name="securityCode" required><br>
+	<br>
     <input type="submit" value="Confirm" />
 </form>
 
