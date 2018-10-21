@@ -2,13 +2,18 @@
 <html>
 <head>
 <title>BU Shopping</title>
+<script src="./scripts/login.js"></script>
 </head>
 <body>
 
-<h1>This is the log in page.</h1>
+<h1>Log In</h1>
 
-<form action="javascript:history.back()">
-    <input type="submit" value="Log In" />
+<span id="login_failed" style="color:red"></span>
+
+<form name="logInForm" action="javascript:history.back()" onsubmit="return validateLogIn()" method="post">
+    Email: <input type="text" name="email" required><br>
+	Password: <input type="password" name="password" required><br>
+    <input type="submit" value="LogIn" />
 </form>
 
 </body>
