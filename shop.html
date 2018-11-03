@@ -3,6 +3,7 @@
 <head>
 <title>BU Shopping</title>
 </head>
+<script src="./scripts/productDB.js"></script>
 <body>
 
 <h1>This is the main shopping page.</h1>
@@ -32,11 +33,16 @@
 //TODO: put this in js file
 var ul = document.getElementById("items");
 //TODO: read this data from a "database" file
-var products = [["Product1", 5], ["Product2", 7], ["Product3", 100]];
+var products = getAllProducts();
 for(var i in products) {
     var li = document.createElement('li');
     
-    li.appendChild(document.createTextNode("Name: " + products[i][0]));
+    li.appendChild(document.createTextNode("Name: "));
+    var a = document.createElement('a');
+    var linkText = document.createTextNode(products[i][0]);
+    a.appendChild(linkText);
+    a.href = "./product.html" + "?productName=" + products[i][0];
+    li.appendChild(a);
     li.appendChild(document.createElement('br'));
     
     li.appendChild(document.createTextNode("Price: $" + products[i][1]));
