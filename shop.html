@@ -6,12 +6,7 @@
 <script src="./scripts/productDB.js"></script>
 <body>
 
-<h1>This is the main shopping page.</h1>
-
-<h2>
-	Products to sell go here.<br>
-	"Sign In" or "Profile" should not be displayed at the same time.
-</h2>
+<h1>BU Shopping!</h1>
 
 <div id="form-actions"></div>
 
@@ -73,10 +68,9 @@ for(var i in products) {
     var btn = document.createElement('button');
     var t = document.createTextNode("Add to Cart");       // Create a text node
 	btn.appendChild(t);
-    btn.setAttribute("id", i);
+    btn.setAttribute("id", products[i][0]);
     btn.addEventListener('click', function(e){
         let item_id = e.target.id;
-        let item = products[item_id];
         if (localStorage.getItem("cart-items")){
             let items = JSON.parse(localStorage["cart-items"]);
             items.push(item_id);
@@ -84,10 +78,10 @@ for(var i in products) {
             localStorage.setItem("cart-items", JSON.stringify(items));
         }
         else{
-            let item = [item_id];
+        	let item = [item_id];
             localStorage.setItem("cart-items", JSON.stringify(item));
         }
-        alert(`${products[item_id][0]} added to cart`)
+        alert(`${item_id} added to cart`)
     });
     li.appendChild(btn);
     

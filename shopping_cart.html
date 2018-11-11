@@ -31,6 +31,7 @@
 	}
 	if (localStorage.getItem("cart-items")){
 		let form_signin = document.createElement("form");
+		form_signin.id = "checkout";
 	    let element1 = document.createElement("input"); 
 	    form_signin.action = "./payment.html";
 	    element1.value = "Checkout";
@@ -46,22 +47,24 @@
 
 	var products = getAllProducts();
 	var ul = document.getElementById("cart-items");
-	if (localStorage.getItem("cart-items") && localStorage.getItem("email")){
+	if (localStorage.getItem("cart-items")){
 		let items = JSON.parse(localStorage["cart-items"]);
 		console.log("Item: ", items);
 		for (let item of items){
+				let product = getProductByName(item);
+
 			    var li = document.createElement('li');
 			    li.setAttribute("id", item);
     
 			    li.appendChild(document.createTextNode("Name: "));
 			    var a = document.createElement('a');
-			    var linkText = document.createTextNode(products[item][0]);
+			    var linkText = document.createTextNode(product[0]);
 			    a.appendChild(linkText);
-			    a.href = "./product.html" + "?productName=" + products[item][0];
+			    a.href = "./product.html" + "?productName=" + product[0];
 			    li.appendChild(a);
 			    li.appendChild(document.createElement('br'));
 			    
-			    li.appendChild(document.createTextNode("Price: $" + products[item][1]));
+			    li.appendChild(document.createTextNode("Price: $" + product[1]));
 			    li.appendChild(document.createElement('br'));
 			    var btn = document.createElement('button');
     			var t = document.createTextNode("delete"); 
@@ -72,10 +75,17 @@
     				let items_updated = JSON.parse(localStorage["cart-items"]);
     				let item_index = items_updated.indexOf(item_id);
     				items_updated.splice(item_index, 1);
-    				localStorage.setItem("cart-items", JSON.stringify(items_updated));
+    				if(items_updated.length > 0){
+    					localStorage.setItem("cart-items", JSON.stringify(items_updated));
+    				}
+    				else{
+    					localStorage.removeItem("cart-items");
+    					let form_actions = document.getElementById("form-actions");
+    					let checkoutButton = document.getElementById("checkout");
+    					form_actions.removeChild(checkoutButton);
+    				}	
     				let element = document.getElementById(item_id);
        				element.parentNode.removeChild(element);
-    				
     			});
 
     			li.appendChild(btn);
