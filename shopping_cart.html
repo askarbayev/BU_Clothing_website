@@ -11,14 +11,79 @@
 	Display the items added to shopping cart.<br>
 	User should be able to checkout without having to sign in.
 </h2>
-
-<form action="./login.html">
-    <input type="submit" value="Sign In" />
-</form>
-
-<form action="./payment.html">
-    <input type="submit" value="Checkout" />
-</form>
+<div id="form-actions"></div>
+<ul id="cart-items"></ul>
 
 </body>
+<script src="./scripts/productDB.js"></script>
+<script type="text/javascript">
+	if (!localStorage.getItem("email")){
+	    let form_signin = document.createElement("form");
+	    let element1 = document.createElement("input"); 
+	    form_signin.action = "./login.html";
+	    element1.value = "Sign In";
+	    element1.type = "submit";
+	    form_signin.appendChild(element1); 
+	    let form_actions = document.getElementById("form-actions");
+	    form_actions.appendChild(form_signin);
+
+
+	}
+	if (localStorage.getItem("cart-items")){
+		let form_signin = document.createElement("form");
+	    let element1 = document.createElement("input"); 
+	    form_signin.action = "./payment.html";
+	    element1.value = "Checkout";
+	    element1.type = "submit";
+	    form_signin.appendChild(element1); 
+	    let form_actions = document.getElementById("form-actions");
+	    form_actions.appendChild(form_signin);
+	}
+	
+
+
+
+
+	var products = getAllProducts();
+	var ul = document.getElementById("cart-items");
+	if (localStorage.getItem("cart-items") && localStorage.getItem("email")){
+		let items = JSON.parse(localStorage["cart-items"]);
+		console.log("Item: ", items);
+		for (let item of items){
+			    var li = document.createElement('li');
+			    li.setAttribute("id", item);
+    
+			    li.appendChild(document.createTextNode("Name: "));
+			    var a = document.createElement('a');
+			    var linkText = document.createTextNode(products[item][0]);
+			    a.appendChild(linkText);
+			    a.href = "./product.html" + "?productName=" + products[item][0];
+			    li.appendChild(a);
+			    li.appendChild(document.createElement('br'));
+			    
+			    li.appendChild(document.createTextNode("Price: $" + products[item][1]));
+			    li.appendChild(document.createElement('br'));
+			    var btn = document.createElement('button');
+    			var t = document.createTextNode("delete"); 
+    			btn.appendChild(t);
+    			btn.setAttribute("id", item);
+    			btn.addEventListener('click', function(e){
+    				let item_id = e.target.id;
+    				let items_updated = JSON.parse(localStorage["cart-items"]);
+    				let item_index = items_updated.indexOf(item_id);
+    				items_updated.splice(item_index, 1);
+    				localStorage.setItem("cart-items", JSON.stringify(items_updated));
+    				let element = document.getElementById(item_id);
+       				element.parentNode.removeChild(element);
+    				
+    			});
+
+    			li.appendChild(btn);
+			    li.appendChild(document.createElement('br'));
+    			li.appendChild(document.createElement('br'));
+    			ul.appendChild(li);
+		}
+
+	}
+</script>
 </html>

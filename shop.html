@@ -13,13 +13,7 @@
 	"Sign In" or "Profile" should not be displayed at the same time.
 </h2>
 
-<form action="./login.html">
-    <input type="submit" value="Sign In" />
-</form>
-
-<form action="./profile.html">
-    <input type="submit" value="Profile" />
-</form>
+<div id="form-actions"></div>
 
 <form action="./shopping_cart.html">
     <input type="submit" value="Shopping Cart" />
@@ -31,9 +25,37 @@
 
 <script>
 //TODO: put this in js file
+console.log("ENAIL:", localStorage.getItem("email"));
+if (localStorage.getItem("email")){
+    // Show Profile button
+    let form_profile = document.createElement("form");
+    let element1 = document.createElement("input"); 
+    form_profile.action = "./profile.html";
+    element1.value = "Profile";
+    element1.type = "submit";
+    form_profile.appendChild(element1); 
+    let form_actions = document.getElementById("form-actions");
+    form_actions.appendChild(form_profile);
+
+
+}
+else{
+    // Show Sign In button
+    let form_signin = document.createElement("form");
+    let element1 = document.createElement("input"); 
+    form_signin.action = "./login.html";
+    element1.value = "Sign In";
+    element1.type = "submit";
+    form_signin.appendChild(element1); 
+    let form_actions = document.getElementById("form-actions");
+    form_actions.appendChild(form_signin);
+
+}
+
 var ul = document.getElementById("items");
 //TODO: read this data from a "database" file
 var products = getAllProducts();
+console.log("Products", products);
 for(var i in products) {
     var li = document.createElement('li');
     
@@ -51,6 +73,22 @@ for(var i in products) {
     var btn = document.createElement('button');
     var t = document.createTextNode("Add to Cart");       // Create a text node
 	btn.appendChild(t);
+    btn.setAttribute("id", i);
+    btn.addEventListener('click', function(e){
+        let item_id = e.target.id;
+        let item = products[item_id];
+        if (localStorage.getItem("cart-items")){
+            let items = JSON.parse(localStorage["cart-items"]);
+            items.push(item_id);
+            items = [...new Set(items)]; 
+            localStorage.setItem("cart-items", JSON.stringify(items));
+        }
+        else{
+            let item = [item_id];
+            localStorage.setItem("cart-items", JSON.stringify(item));
+        }
+        alert(`${products[item_id][0]} added to cart`)
+    });
     li.appendChild(btn);
     
     li.appendChild(document.createElement('br'));

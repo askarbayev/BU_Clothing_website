@@ -18,4 +18,7 @@ function displayUserInfo() {
 
 function logOut(){
 	localStorage.removeItem("email");
+	if (localStorage.getItem("cart-items")){
+		localStorage.removeItem("cart-items");
+	}
 }
