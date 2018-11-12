@@ -1,9 +1,7 @@
 window.onload = displayProductInfo; 
 
 function displayProductInfo() { 
-	var url_string = window.location.href;
-	var url = new URL(url_string);
-	var productName = url.searchParams.get("productName");
+	let productName = getProductName();
 	if(productName == null){
 		var productNameElement = document.getElementById("productName");
 		productNameElement.appendChild(document.createTextNode("No product selected!"));
@@ -17,6 +15,13 @@ function displayProductInfo() {
 	setProductdDescShort(product[DESC_SHORT_INDEX]);
 	setProductdDescLong(product[DESC_LONG_INDEX]);
 	setProductdImage(product[IMAGE_INDEX]);
+}
+
+function getProductName(){
+	let url_string = window.location.href;
+	let url = new URL(url_string);
+	let productName = url.searchParams.get("productName");
+	return productName;
 }
 
 function setProductName(productName){
@@ -43,4 +48,22 @@ function setProductdImage(image){
 	var productImageElement = document.getElementById("image");
 	var imagePath = "./images/" + image;
 	productImageElement.src = imagePath;
+}
+
+function addToCart(){
+	let item_id = getProductName();
+	if(item_id == null){
+		return;
+	}
+	if (localStorage.getItem("cart-items")){
+		let items = JSON.parse(localStorage["cart-items"]);
+		items.push(item_id);
+		items = [...new Set(items)]; 
+		localStorage.setItem("cart-items", JSON.stringify(items));
+	}
+	else{
+		let item = [item_id];
+		localStorage.setItem("cart-items", JSON.stringify(item));
+	}
+	alert(`${item_id} added to cart`);
 }
