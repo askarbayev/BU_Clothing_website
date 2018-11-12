@@ -14,6 +14,19 @@
     <input type="submit" value="Shopping Cart" />
 </form>
 
+<br/>
+<span>Filter:</span>
+<select id="categoryFilter" onchange="applyFilters()">
+  <option value="None">None</option>
+  <option value="Clothing">Clothing</option>
+  <option value="Supplies">Supplies</option>
+</select>
+
+<br/>
+<input type="text" id="search">
+<button type="button" onclick="applyFilters()">Search</button>
+
+
 <ul id="items"></ul>
 
 </body>
@@ -51,44 +64,109 @@ var ul = document.getElementById("items");
 //TODO: read this data from a "database" file
 var products = getAllProducts();
 console.log("Products", products);
-for(var i in products) {
-    var li = document.createElement('li');
+displayItems(products);
+
+function displayItems(products){
+    for(var i in products) {
+        var li = document.createElement('li');
+
+        li.appendChild(document.createTextNode("Name: "));
+        var a = document.createElement('a');
+        var linkText = document.createTextNode(products[i][0]);
+        a.appendChild(linkText);
+        a.href = "./product.html" + "?productName=" + products[i][0];
+        li.appendChild(a);
+        li.appendChild(document.createElement('br'));
+
+        li.appendChild(document.createTextNode("Price: $" + products[i][1]));
+        li.appendChild(document.createElement('br'));
+
+        var btn = document.createElement('button');
+        var t = document.createTextNode("Add to Cart");       // Create a text node
+        btn.appendChild(t);
+        btn.setAttribute("id", products[i][0]);
+        btn.addEventListener('click', function(e){
+            let item_id = e.target.id;
+            if (localStorage.getItem("cart-items")){
+                let items = JSON.parse(localStorage["cart-items"]);
+                items.push(item_id);
+                items = [...new Set(items)]; 
+                localStorage.setItem("cart-items", JSON.stringify(items));
+            }
+            else{
+                let item = [item_id];
+                localStorage.setItem("cart-items", JSON.stringify(item));
+            }
+            alert(`${item_id} added to cart`);
+        });
+        li.appendChild(btn);
     
-    li.appendChild(document.createTextNode("Name: "));
-    var a = document.createElement('a');
-    var linkText = document.createTextNode(products[i][0]);
-    a.appendChild(linkText);
-    a.href = "./product.html" + "?productName=" + products[i][0];
-    li.appendChild(a);
-    li.appendChild(document.createElement('br'));
-    
-    li.appendChild(document.createTextNode("Price: $" + products[i][1]));
-    li.appendChild(document.createElement('br'));
-    
-    var btn = document.createElement('button');
-    var t = document.createTextNode("Add to Cart");       // Create a text node
-	btn.appendChild(t);
-    btn.setAttribute("id", products[i][0]);
-    btn.addEventListener('click', function(e){
-        let item_id = e.target.id;
-        if (localStorage.getItem("cart-items")){
-            let items = JSON.parse(localStorage["cart-items"]);
-            items.push(item_id);
-            items = [...new Set(items)]; 
-            localStorage.setItem("cart-items", JSON.stringify(items));
-        }
-        else{
-        	let item = [item_id];
-            localStorage.setItem("cart-items", JSON.stringify(item));
-        }
-        alert(`${item_id} added to cart`);
-    });
-    li.appendChild(btn);
-    
-    li.appendChild(document.createElement('br'));
-    li.appendChild(document.createElement('br'));
-    ul.appendChild(li);
+        li.appendChild(document.createElement('br'));
+        li.appendChild(document.createElement('br'));
+        ul.appendChild(li);
+    }
 }
+
+function clearItems(){
+    var myNode = document.getElementById("items");
+    while (myNode.firstChild) {
+        myNode.removeChild(myNode.firstChild);
+    }
+}
+
+
+function applyFilters(){
+    clearItems();
+
+    var products = getAllProducts();
+    products = filterByCategory(products);
+    products = filterBySearch(products);
+
+    displayItems(products);
+}
+
+function filterByCategory(products){
+    var productsTemp = [];
+
+    var select = document.getElementById("categoryFilter");
+    var option = select.value;
+    for(var i in products) {
+        if(option == "None" || option == products[i][2]){
+            productsTemp.push(products[i]);
+        }
+    }
+
+    return productsTemp;
+}
+
+
+function filterBySearch(products){
+    var search = document.getElementById("search").value;
+    var productsTemp = [];
+    for(var i in products) {
+        var name = products[i][0];
+        var shortDescription = products[i][3];
+        var longDescription = products[i][4];
+
+        var match = false; 
+        if(!search){
+            //Not searching
+            match = true;
+        }else if(name.includes(search)){
+            match = true;
+        }else if(shortDescription.includes(search)){
+            match = true;
+        }
+        else if(longDescription.includes(search)){
+            match = true;
+        }
+        if(match){
+            productsTemp.push(products[i]);
+        }
+    }
+    return productsTemp;
+}
+
 </script>
 
 
