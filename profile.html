@@ -1,26 +1,87 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>BU Shopping</title>
+<meta charset="utf-8">
+
+<style>
+a {
+	font-size: 17px;
+}
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+<script
+	src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<script src="./scripts/login.js"></script>
 <script src="./scripts/profile.js"></script>
 <script src="./scripts/login.js"></script>
+<title>Profile</title>
+
 </head>
 <body>
+	
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<a class="navbar-brand" href="shop.html">Shop</a>
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" href="shopping_cart.html">Shopping Cart</a></li>
+		</ul>
+	</nav>
+	
+	<div class="jumbotron "
+		style="background: linear-gradient(#AD0101, #840202);">
+		<div class="container">
+			<img src="images/logo.png" style="height: 80px" /><br /> <span
+				style="color: white; font-size: 35px">My Account</span>
+		</div>
+	</div>
 
-<h1>Profile page.</h1>
+	<h2 id="userInfo"></h2>
+	<div class="card" id="userInfo" style="width: 900px; left: 300px;">
+		<div class="card-header" style="font-size: 26px">Account
+			Information</div>
+		<div class="card-body" id="innerbody">
+			<img src="images/photo.jpg" style="width: 120px; margin-left: 370px" /><br />
+			<br />
+			<div>
+				<div style="float: left; margin-left: 290px">Name:
+					&nbsp;&nbsp;&nbsp;</div>
+				<input type="text" id="name" readonly class="form-control"
+					style="width: 200px; float: left">
+			</div>
+			<br /> <br />
+			<div>
+				<div style="float: left; margin-left: 290px">Email:
+					&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				<input type="text" id="email" readonly class="form-control"
+					style="width: 200px; float: left">
+			</div>
+		</div>
 
-<h2 id="userInfo">
-	Hello!
-	<br>
-</h2>
+		<div>
+			<form action="./shop.html" style="float: left; margin-left: 310px">
+				<input type="submit" value="Continue Shopping"
+					class="btn btn-primary" />
+			</form>
+			<div style="width: 30px; height: 50px; float: left"></div>
 
-<form action="./shop.html">
-    <input type="submit" value="Continue Shopping" />
-</form>
+			<form action="./shop.html" onsubmit="return logOut()"
+				style="float: left">
+				<input type="submit" value="Sign Out" class="btn btn-default" />
+			</form>
+		</div>
+		<br />
+	</div>
 
-<form action="./shop.html" onsubmit="return logOut()">
-    <input type="submit" value="Sign Out" />
-</form>
+	<br />
+	<br />
+	<br />
+
+
 
 
 </body>

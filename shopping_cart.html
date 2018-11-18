@@ -1,18 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>BU Shopping</title>
+
+<meta charset="utf-8">
+
+<style>
+a {
+	font-size: 17px;
+}
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+<script
+	src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<title>Shopping Cart</title>
 </head>
 <body>
 
-<h1>This is the shopping cart page.</h1>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<a class="navbar-brand" href="shop.html">Shop</a>
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" href="profile.html">My
+					Profile</a></li>
+		</ul>
+	</nav>
 
-<h2>
-	Display the items added to shopping cart.<br>
-	User should be able to checkout without having to sign in.
-</h2>
-<div id="form-actions"></div>
-<ul id="cart-items"></ul>
+	<div class="jumbotron "
+		style="background: linear-gradient(#AD0101, #840202);">
+		<div class="container">
+			<img src="images/logo.png" style="height: 80px" /><br /> <span
+				style="color: white; font-size: 35px">Shopping Cart</span>
+		</div>
+	</div>
+
+
+	<h2>
+		Display the items added to shopping cart.<br> User should be able
+		to checkout without having to sign in.
+	</h2>
+	<div id="form-actions" style="margin-left:475px"></div><br/>
+	<ul id="cart-items" class="list-group" style="width:500px;margin-left:475px"></ul>
 
 </body>
 <script src="./scripts/productDB.js"></script>
@@ -23,6 +56,7 @@
 	    form_signin.action = "./login.html";
 	    element1.value = "Sign In";
 	    element1.type = "submit";
+	    element1.className += "btn btn-primary";
 	    form_signin.appendChild(element1); 
 	    let form_actions = document.getElementById("form-actions");
 	    form_actions.appendChild(form_signin);
@@ -34,8 +68,9 @@
 		form_signin.id = "checkout";
 	    let element1 = document.createElement("input"); 
 	    form_signin.action = "./payment.html";
-	    element1.value = "Checkout";
+	    element1.value = "Check Out";
 	    element1.type = "submit";
+	    element1.className += "btn btn-primary";
 	    form_signin.appendChild(element1); 
 	    let form_actions = document.getElementById("form-actions");
 	    form_actions.appendChild(form_signin);
@@ -54,6 +89,7 @@
 				let product = getProductByName(item);
 
 			    var li = document.createElement('li');
+			    li.className += "list-group-item";
 			    li.setAttribute("id", item);
     
 			    li.appendChild(document.createTextNode("Name: "));
@@ -61,13 +97,15 @@
 			    var linkText = document.createTextNode(product[0]);
 			    a.appendChild(linkText);
 			    a.href = "./product.html" + "?productName=" + product[0];
+			    
 			    li.appendChild(a);
 			    li.appendChild(document.createElement('br'));
 			    
 			    li.appendChild(document.createTextNode("Price: $" + product[1]));
 			    li.appendChild(document.createElement('br'));
 			    var btn = document.createElement('button');
-    			var t = document.createTextNode("delete"); 
+    			var t = document.createTextNode("delete");
+    			btn.className += "btn";
     			btn.appendChild(t);
     			btn.setAttribute("id", item);
     			btn.addEventListener('click', function(e){

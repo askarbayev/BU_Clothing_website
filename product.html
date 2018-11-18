@@ -1,30 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>BU Shopping</title>
+<meta charset="utf-8">
+
+<style>
+a {
+	font-size: 17px;
+}
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+<script
+	src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
 <script src="./scripts/productDB.js"></script>
 <script src="./scripts/product.js"></script>
+<title>Product</title>
+
 </head>
 <body>
 
-<h1>Product Page.</h1>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<a class="navbar-brand" href="shop.html">Shop</a>
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link" href="profile.html">My
+					Profile</a></li>
+			<li class="nav-item"><a class="nav-link"
+				href="shopping_cart.html">Shopping Cart</a></li>
+		</ul>
+	</nav>
+	<br />
+	<br />
 
-<h2 id="productName"></h2>
-
-<p id="cost">$</p>
-
-<p id="descShort"></p>
-
-<p id="descLong"></p>
-
-<img id="image"><br>
-
-<button type="button" onclick="addToCart()">Add to Cart</button>
-
-<form action="./shop.html">
-    <input type="submit" value="Continue Shopping" />
-</form>
-
+	<div class="container">
+		<img id="image" style="float: left; width: 50%"> 
+		<span id="productName" style="font-size: 50px; font-weight: bold;"></span><br />
+		<span id="cost" style="font-size: 40px;">Your Price: $</span> <br />
+		<span id="descShort" style="font-size: 27px"></span><br /> <br /> <br />
+		<span id="descLong"></span> <br /> <br /> <br /> <br /> <br /> <br />
+		<button type="button" onclick="addToCart()" class="btn btn-primary">Add
+			to Cart</button>
+		<br /> <br />
+		<form action="./shop.html">
+			<input type="submit" value="Continue Shopping" class="btn" />
+		</form>
+	</div>
 </body>
 
 </html>

@@ -1,20 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>BU Shopping</title>
+<meta charset="utf-8">
+
+<style>
+a {
+	font-size: 17px;
+}
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+<script
+	src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script src="./scripts/login.js"></script>
+
+<title>Login</title>
+
 </head>
 <body>
 
-<h1>Log In</h1>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
 
-<span id="login_failed" style="color:red"></span>
+		<a class="navbar-brand" href="shop.html">Shop</a>
+	</nav>
 
-<form name="logInForm" action="./shop.html" onsubmit="return validateLogIn()" method="post">
-    Email: <input type="text" name="email" required><br><br/><br/>
-	Password: <input type="password" name="password" required><br>
-    <input type="submit" value="LogIn" />
-</form>
+
+
+	<div class="jumbotron "
+		style="background: linear-gradient(#AD0101, #840202);">
+		<div class="container">
+			<img src="images/logo.png" style="height: 80px" /><br /> <span
+				style="color: white; font-size: 35px">Please Log in</span>
+		</div>
+	</div>
+
+	<div calss="container">
+
+		<!-- <form name="logInForm" action="./shop.html"
+			onsubmit="return validateLogIn()" method="post">
+			Email: <input type="text" name="email" required><br> <br />
+			<br /> Password: <input type="password" name="password" required><br>
+			<input type="submit" value="LogIn" />
+		</form> -->
+
+
+		<form role="form" name="logInForm" action="./shop.html"
+			onsubmit="return validateLogIn()" method="post">
+			<hr />
+			<br />
+			<div class="form-inline" style="margin-left: 612px;">
+				Email: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="form-control"
+					type="text" name="email" autofocus
+					placeholder="Please input your email" required />
+			</div>
+			</br>
+
+			<div class="form-inline" style="margin-left: 612px;">
+				Password: <input type="password" class="form-control"
+					name="password" placeholder="Please input password" required />
+			</div>
+			</br> <span id="login_failed" style="color: red; margin-left: 612px"></span>
+
+			<div style="overflow: hidden; text-align: center; margin-left: 0px;">
+				<input type="submit" class="btn btn-info" value="Log in">&nbsp;&nbsp;
+				<input type="reset" class="btn btn-light" value="Clear all">
+			</div>
+		</form>
+
+	</div>
 
 </body>
 </html>

@@ -1,17 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>BU Shopping</title>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+<script
+	src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+<title>Confirmation</title>
 </head>
 <body>
 
-<h1>Payment Confirmed</h1>
+	<div class="jumbotron "
+		style="background: linear-gradient(#AD0101, #840202);">
+		<div class="container">
+			<img src="images/logo.png" style="height: 80px" /><br /> <span
+				style="color: white; font-size: 35px">Payment Confirmed</span>
+		</div>
+	</div>
 
-<p>Thank you for your purchases.</p>
+	<div style="text-align:center;width:500px;margin-left:500px">
+		<h2>Thank you for your purchases!</h2>
+		<br/><br/>
+		<form action="./shop.html">
+			<input type="submit" value="Continue Shopping" class="btn btn-default"/>
+		</form>
+	</div>
 
-<form action="./shop.html">
-    <input type="submit" value="Continue Shopping" />
-</form>
+
+
+
 
 </body>
 </html>

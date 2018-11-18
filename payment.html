@@ -1,27 +1,86 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>BU Shopping</title>
+
+<meta charset="utf-8">
+
+<style>
+a {
+	font-size: 17px;
+}
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://cdn.staticfile.org/popper.js/1.12.5/umd/popper.min.js"></script>
+<script
+	src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script src="./scripts/productDB.js"></script>
 <script src="./scripts/payment.js"></script>
+<title>Payment</title>
+
 </head>
+
 <body>
+	<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+		<a class="navbar-brand" href="#" onclick="ifJumptoShop()">Shop</a>
+		<ul class="navbar-nav">
+			<li class="nav-item"><a class="nav-link"
+				onclick="ifJumptoProfile()">My Profile</a></li>
+		</ul>
+	</nav>
 
-<h1>Payment</h1>
+	<div class="jumbotron "
+		style="background: linear-gradient(#AD0101, #840202);">
+		<div class="container">
+			<img src="images/logo.png" style="height: 80px" /><br /> <span
+				style="color: white; font-size: 35px">Payment</span>
+		</div>
+	</div>
 
-<span>Total amount to charge:</span>&nbsp;<span id="totalCost"></span><br><br>
+	<div class="card"
+		style="text-align: center; width: 500px; margin-left: 500px">
 
-<form action="./payment_confirmation.html" onsubmit="return validatePayment()" method="post">
-	Credit Card Type: 
-	<select name="cardType" required>
-  		<option value="master">Master Card</option>
-  		<option value="visa">Visa</option>
-	</select><br>
-	Credit Card Number: <input type="text" name="creditCardNumber" required><br>
-	Security Code: <input type="text" name="securityCode" required><br>
-	<br>
-    <input type="submit" value="Confirm" />
-</form>
+
+		<span style="font-size: 38px;">Total amount to charge:</span>
+		<h1 id="totalCost"></h1>
+		<br> <br>
+
+		<form action="./payment_confirmation.html"
+			onsubmit="return validatePayment()" method="post">
+			<div style="margin-left: 60px">
+				<span style="float: left">Credit Card Type:</span> <select
+					name="cardType" required style="float: left; width: 200px"
+					class="form-control">
+					<option value="master">Master Card</option>
+					<option value="visa">Visa</option>
+				</select>
+			</div>
+
+			<br /> <br />
+			<div style="margin-left: 60px">
+				<span style="float: left">Credit Card Number: </span> <input
+					type="text" name="creditCardNumber" requird
+					style="float: left; width: 175px" class="form-control"><br>
+			</div>
+			<br />
+
+			<div style="margin-left: 60px">
+				<span style="float: left">Security Code: </span> <input type="text"
+					name="securityCode" required style="float: left; width: 150px"
+					class="form-control">
+			</div>
+
+			<br> <br> <br> <input type="submit" value="Confirm"
+				class="btn btn-primary" />&nbsp;&nbsp; <input type="button"
+				name="Submit" value="Go Back to Cart"
+				onclick="javascript:history.back(-1);" class="btn btn-default">
+		</form>
+		<br>
+	</div>
 
 </body>
 </html>

@@ -24,3 +24,18 @@ function validatePayment() {
 	localStorage.removeItem("cart-items");
     return true;
 }
+
+function ifJumptoShop(){
+	var ifJump = window.confirm("Are you sure to cancel the payment?");
+	　　if(ifJump == true)
+	　　　　window.location.href = "shop.html";
+	　　else
+	　　　　window.location.href = "#";
+}
+function ifJumptoProfile(){
+	var ifJump = window.confirm("Are you sure to cancel the payment?");
+	　　if(ifJump == true)
+	　　　　window.location.href = "profile.html";
+	　　else
+	　　　　window.location.href = "#";
+}
