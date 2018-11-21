@@ -15,6 +15,8 @@ var products =
 ["Portable Charger", 49.99, "Supplies", "Boston University 4000mAh Portable USB Charger", "Celebrate your Boston University fandom and add to your team collection with this 4000mAh Portable USB Charger!", "Charger.jpg"]
 ];
 
+//The resources of the above data include the images sources all come from the following website:http://shop.cbssports.com/CBS_Boston_University
+
 var NAME_INDEX = 0;
 var COST_INDEX = 1;
 var CATEGORY_INDEX = 2;
