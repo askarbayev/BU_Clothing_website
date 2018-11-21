@@ -74,8 +74,6 @@ a {
 	
 
 
-
-
 	var products = getAllProducts();
 	var ul = document.getElementById("cart-items");
 	if (localStorage.getItem("cart-items")){
@@ -128,6 +126,13 @@ a {
     			ul.appendChild(li);
 		}
 
+	}
+	else{
+		let noItemsText = document.createElement("h1");
+		var t = document.createTextNode("Shopping Cart Empty - Add Some Items!");
+		noItemsText.appendChild(t);
+		let form_actions = document.getElementById("form-actions");
+	    form_actions.appendChild(noItemsText);
 	}
 </script>
 </html>
