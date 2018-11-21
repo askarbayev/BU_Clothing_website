@@ -12,9 +12,15 @@ function displayUserInfo() {
 		displayString = displayString + newLine 
 		+ nameString + newLine
 		+ emailString + newLine;
+
+		var ccNumber = "no card"
+		if(userData.length > 3){
+			ccNumber = userData[4];
+		}
 	}
 	document.getElementById("email").value = email;
 	document.getElementById("name").value = name;
+	document.getElementById("creditCard").value = ccNumber;
 }
 
 function logOut(){
