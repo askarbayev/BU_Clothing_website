@@ -19,6 +19,7 @@ a {
 <script
 	src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
 <script src="./scripts/productDB.js"></script>
+<script src="./scripts/login.js"></script>
 <script src="./scripts/payment.js"></script>
 <title>Payment</title>
 
@@ -49,10 +50,15 @@ a {
 		<h1 id="totalCost"></h1>
 		<br> <br>
 
+		<div id="ccOnFile">
+			<button type="button" onclick="setCard()" class="btn btn-primary" style="margin-left: 150px; width: 200px">Use Credit Card on File</button>
+			<br> <br>
+		</div>
+
 		<form action="./payment_confirmation.html"
 			onsubmit="return validatePayment()" method="post">
 			<div style="margin-left: 60px">
-				<span style="float: left">Credit Card Type:</span> <select
+				<span style="float: left">Credit Card Type:</span> <select id="cardType"
 					name="cardType" required style="float: left; width: 200px"
 					class="form-control">
 					<option value="master">Master Card</option>
@@ -62,14 +68,14 @@ a {
 
 			<br /> <br />
 			<div style="margin-left: 60px">
-				<span style="float: left">Credit Card Number: </span> <input
+				<span style="float: left">Credit Card Number: </span> <input id="cardNumber"
 					type="text" name="creditCardNumber" requird
 					style="float: left; width: 175px" class="form-control"><br>
 			</div>
 			<br />
 
 			<div style="margin-left: 60px">
-				<span style="float: left">Security Code: </span> <input type="text"
+				<span style="float: left">Security Code: </span> <input type="text" id="cardSC"
 					name="securityCode" required style="float: left; width: 150px"
 					class="form-control">
 			</div>
