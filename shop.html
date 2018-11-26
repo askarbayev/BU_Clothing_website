@@ -36,20 +36,6 @@ a {
 
 	<div class="container">
 
-		<div class="form-group" style="margin-left: 150px">
-			<span style="float:left">Filter:</span> 
-			<select class="form-control" id="categoryFilter" onchange="applyFilters()" style="width:300px;float:left;">
-				<option value="None">None</option>
-				<option value="Clothing">Clothing</option>
-				<option value="Supplies">Supplies</option>
-			</select>
-			<div style="width:30px;height:20px;float:left"></div>
-			<input type="text" class="form-control" id="search" style="width:300px;float:left">
-			<div style="width:30px;height:20px;float:left"></div>
-			<button type="button" onclick="applyFilters()" class="btn btn-primary" style="float:left">Search</button>
-		</div><br/><br/>
-
-
 		<span style="font-size:50px">Hottest:</span>
 		<div id="demo" class="carousel slide" data-ride="carousel">
 		
@@ -61,13 +47,13 @@ a {
 
 			<div class="carousel-inner">
 				<div class="carousel-item active">
-					<a href="product.html?productName=Hoodie"><img src="images/Hoodie1.jpg" style="width:90%"></a>
+					<a href="product.html?productName=Hoodie"><img src="images/Hoodie1.jpg" style="width:70%"></a>
 				</div>
 				<div class="carousel-item">
-					<a href="product.html?productName=Jacket"><img src="images/Jacket1.jpg" style="width:90%"></a>
+					<a href="product.html?productName=Jacket"><img src="images/Jacket1.jpg" style="width:70%"></a>
 				</div>
 				<div class="carousel-item">
-					<a href="product.html?productName=Pants"><img src="images/Pants.jpg" style="width:90%"></a>
+					<a href="product.html?productName=Pants"><img src="images/Pants.jpg" style="width:70%"></a>
 				</div>
 			</div>
 
@@ -78,9 +64,23 @@ a {
 			</a>
 
 		</div>
-		
+		<br/><br/>
+
+		<div class="form-group" style="margin-left: 10px">
+			<span style="float:left">Filter:</span> 
+			<select class="form-control" id="categoryFilter" onchange="applyFilters()" style="width:300px;float:left;">
+				<option value="None">None</option>
+				<option value="Clothing">Clothing</option>
+				<option value="Supplies">Supplies</option>
+			</select>
+			<div style="width:30px;height:20px;float:left"></div>
+			<input type="text" class="form-control" id="search" style="width:300px;float:left">
+			<div style="width:30px;height:20px;float:left"></div>
+			<button type="button" onclick="applyFilters()" class="btn btn-primary" style="float:left">Search</button>
+		</div><br/>
+
 		<div style="float: left;">
-		<span style="font-size:50px">All Items:</span>
+		<span style="font-size:50px">Product List:</span>
 
 			<ul id="items" class="list-group"></ul>
 
