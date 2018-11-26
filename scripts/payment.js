@@ -74,3 +74,6 @@ function ifJumptoProfile(){
 	　　else
 	　　　　window.location.href = "#";
 }
+
+
+
