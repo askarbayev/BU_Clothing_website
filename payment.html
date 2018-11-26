@@ -97,6 +97,7 @@ if (localStorage.getItem("email")){
 	//navigation_profile.href = './profile.html';
 	navigation_profile.appendChild(element1);
     navigation_profile.className = "nav-link";
+	navigation_profile.setAttribute("onclick","ifJumptoProfile()");
     let navigation_action = document.getElementById("navigation-actions");
     navigation_action.appendChild(navigation_profile);
 	
