@@ -14,8 +14,7 @@ var products =
 ["Flash Drive", 24.99, "Supplies", "Boston University 16GB Credit Card Style USB Bottle Opener Flash Drive", "Celebrate your Boston University fandom and add to your team collection with this 16GB Credit Card Style USB Bottle Opener Flash Drive!", "Drive.jpg"],
 ["Portable Charger", 49.99, "Supplies", "Boston University 4000mAh Portable USB Charger", "Celebrate your Boston University fandom and add to your team collection with this 4000mAh Portable USB Charger!", "Charger.jpg"]
 ];
-
-//The resources of the above data include the images sources all come from the following website:http://shop.cbssports.com/CBS_Boston_University
+//The above data, including the images, all come from the following website: http://shop.cbssports.com/CBS_Boston_University
 
 var NAME_INDEX = 0;
 var COST_INDEX = 1;
