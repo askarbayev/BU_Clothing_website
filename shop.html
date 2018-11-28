@@ -100,6 +100,23 @@ a {
 
 <script>
 //TODO: put this in js file
+
+//based on https://stackoverflow.com/questions/16427636/check-if-localstorage-is-available
+try {
+	localStorage.setItem('feature_test', 'yes');
+	if (localStorage.getItem('feature_test') === 'yes') {
+		localStorage.removeItem('feature_test');
+            // localStorage is enabled
+        } else {
+            // localStorage is disabled
+            alert("Please enable local storage cookies.");
+        }
+    } catch(e) {
+        // localStorage is disabled
+        alert("Please enable local storage cookies.");
+    }
+
+
 console.log("ENAIL:", localStorage.getItem("email"));
 if (localStorage.getItem("email")){
     // Show Profile navigation
