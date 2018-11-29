@@ -12,7 +12,8 @@ var products =
 ["Women T-shirt", 29.99, "Clothing", "Boston University Fanatics Branded Women's Plus Sizes Primary Team Logo T-Shirt", "Sure you can go around and tell everyone how dedicated you are to the Boston University, but there is a much easier way to get your point across. Let everyone you pass know that you are a born and bred Boston University fan with this Fanatics Branded Primary Team Logo T-shirt! This tee boasts your team pride with Boston University graphics. There are many ways to show your spirit, but this way you won't lose your voice.", "WTsh1.jpg"],
 ["Phone Case", 24.99, "Supplies", "Boston University Samsung Galaxy Plaid Glitter Case", "Celebrate your Boston University fandom and add to your team collection with this Samsung Galaxy Plaid Glitter Case!", "Case.jpg"],
 ["Flash Drive", 24.99, "Supplies", "Boston University 16GB Credit Card Style USB Bottle Opener Flash Drive", "Celebrate your Boston University fandom and add to your team collection with this 16GB Credit Card Style USB Bottle Opener Flash Drive!", "Drive.jpg"],
-["Portable Charger", 49.99, "Supplies", "Boston University 4000mAh Portable USB Charger", "Celebrate your Boston University fandom and add to your team collection with this 4000mAh Portable USB Charger!", "Charger.jpg"]
+["Portable Charger", 49.99, "Supplies", "Boston University 4000mAh Portable USB Charger", "Celebrate your Boston University fandom and add to your team collection with this 4000mAh Portable USB Charger!", "Charger.jpg"],
+["Calculator", 120.99, "Supplies", "Graphing Calculator", "Graphing calculator with all the funtionality you need. Ace your algebra, trigonometry, and calculus classes! Requires 4 AAA batteries.", "Calculator.png"]
 ];
 //The above data, including the images, all come from the following website: http://shop.cbssports.com/CBS_Boston_University
 
